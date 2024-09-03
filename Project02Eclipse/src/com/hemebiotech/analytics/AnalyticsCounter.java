@@ -16,23 +16,24 @@ public class AnalyticsCounter {
 		String line = reader.readLine();
 
 		int i = 0;
-		int headCount = 0;
 		while (line != null) {
 			i++;
 			System.out.println("symptom from file: " + line);
 			
 			//compte le nombre de fois où le symptome "headache" est présent
 			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
+				headacheCount++;
+				System.out.println("number of headaches: " + headacheCount);
 			}
 			//compte le nombre de fois où le symptome "rash" est présent
 			else if (line.equals("rash")) {
 				rashCount++;
+				System.out.println("number of rash: " + rashCount);
 			}
 			//compte le nombre de fois où le symptome "pupils" est présent
 			else if (line.contains("pupils")) {
 				pupilCount++;
+				System.out.println("number of pupil: " + pupilCount);
 			}
 			
 			line = reader.readLine();
