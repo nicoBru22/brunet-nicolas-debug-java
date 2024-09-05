@@ -37,13 +37,11 @@ public class AnalyticsCounter {
 			}
 			
 			line = reader.readLine();
-		}
+		};
 		
-		//Ecriture du résultat dans le fichier "result.out"
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+		
+		WriteSymptomDataFromFile writer = new WriteSymptomDataFromFile();
+		writer.WriteSymptomData(rashCount , headacheCount , pupilCount);
+		
 	}
 }
