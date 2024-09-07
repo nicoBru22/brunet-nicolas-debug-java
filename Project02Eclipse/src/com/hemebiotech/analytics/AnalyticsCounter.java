@@ -1,47 +1,43 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.*;
+
+
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
 	
-	public static void main(String args[]) throws Exception {
-
-		//lecture du document "symptom.txt" 
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
-
-		int i = 0;
-		while (line != null) {
-			i++;
-			System.out.println("symptom from file: " + line);
-			
-			//compte le nombre de fois où le symptome "headache" est présent
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			}
-			//compte le nombre de fois où le symptome "rash" est présent
-			else if (line.equals("rash")) {
-				rashCount++;
-				System.out.println("number of rash: " + rashCount);
-			}
-			//compte le nombre de fois où le symptome "pupils" est présent
-			else if (line.contains("pupils")) {
-				pupilCount++;
-				System.out.println("number of pupil: " + pupilCount);
-			}
-			
-			line = reader.readLine();
-		};
-		
-		
-		WriteSymptomDataFromFile writer = new WriteSymptomDataFromFile();
-		writer.WriteSymptomData(rashCount , headacheCount , pupilCount);
-		
+	private ISymptomReader monReader;
+    private ISymptomWriter monWriter;
+    
+	AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
+		this.monReader = reader;
+		this.monWriter = writer;
 	}
+	
+	public void analyseEtEcritureSymptome() {
+		
+	    List<String> symptoms = monReader.GetSymptoms();
+
+	    Map<String, Integer> symptomCounts = new HashMap<>();
+	    for (String symptom : symptoms) {
+	        symptomCounts.put(symptom, symptomCounts.getOrDefault(symptom, 0) + 1);
+	    }
+
+	    List<Map.Entry<String, Integer>> sortedSymptomEntries = new ArrayList<>(symptomCounts.entrySet());
+
+	    Collections.sort(sortedSymptomEntries, Map.Entry.comparingByKey());
+
+	    List<String> symptomData = sortedSymptomEntries.stream()
+	            .map(entry -> entry.getKey() + ": " + entry.getValue())
+	            .collect(Collectors.toList());
+
+	    monWriter.WriteSymptomData(symptomData);
+	}
+	
 }
+
+

@@ -1,8 +1,9 @@
 package com.hemebiotech.analytics;
 
+import java.util.List;
 
 public interface ISymptomWriter {
 	
-	void WriteSymptomData(int rashCount, int headacheCount, int pupilCount );
+	void WriteSymptomData(List<String> result);
     
 }
