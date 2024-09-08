@@ -9,7 +9,7 @@ import java.util.List;
  * La class {@code WriteSymptomDataFromFile} permet d'écrire des données sur les symptômes
  * dans un fichier spécifié par le chemin {@code filePath}.
  * Cette class implémente l'interface {@link ISymptomWriter} et fournit une implémentation de la méthode
- * {@code WriteSymptomData} pour écrire une liste de symptômes dans un fichier.
+ * {@code writeSymptoms()} pour écrire une liste de symptômes dans un fichier.
  */
 public class WriteSymptomDataFromFile implements ISymptomWriter {
 
@@ -26,7 +26,7 @@ public class WriteSymptomDataFromFile implements ISymptomWriter {
 	}
 
 	/**
-	 * La méthode {@code WriteSymptomData} écrit les informations sur les symptômes dans le fichier spécifié.
+	 * La méthode {@code writeSymptoms} écrit les informations sur les symptômes dans le fichier spécifié.
 	 * Cette méthode prend une liste de chaînes de caractères, où chaque élément représente un symptôme, 
 	 * et les écrit ligne par ligne dans le fichier. 
 	 * Si une erreur survient lors de l'écriture, un message d'erreur est affiché dans la console.
@@ -35,7 +35,7 @@ public class WriteSymptomDataFromFile implements ISymptomWriter {
 	 * de la class {@link AnalyticsCounter}
 	 * @throws IOException Si une erreur survient lors de l'écriture dans le fichier, une exception {@code IOException} est levée.
 	 */
-    public void WriteSymptomData(List<String> result) {
+    public void writeSymptoms(List<String> result) {
 
         try {
     		FileWriter fileWriter = new FileWriter(filePath);

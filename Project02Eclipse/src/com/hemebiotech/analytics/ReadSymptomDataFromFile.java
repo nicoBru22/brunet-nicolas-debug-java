@@ -26,7 +26,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 	
 	/**
-	 * La méthode {@code GetSymptoms()} permet de créer une liste nommée {@code result}.
+	 * La méthode {@code getSymptoms()} permet de créer une liste nommée {@code result}.
 	 * Cette méthode permet de lire ligne par ligne un fichier et les ajoute à une liste.
 	 * Si le fichier n'existe pas, une erreur s'affiche dans la console. 
 	 * 
@@ -35,7 +35,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 */
 
 	@Override
-	public List<String> GetSymptoms() {
+	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<String>();
 		
 		if (filepath != null) {

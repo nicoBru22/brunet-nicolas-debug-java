@@ -47,7 +47,7 @@ public class AnalyticsCounter {
     }
     
     /**
-     * La méthode {@code sortedSymptoms} trie les symptômes par ordre alphabétique.
+     * La méthode {@code sortSymptoms} trie les symptômes par ordre alphabétique.
      * <p>
      * Elle utilise la {@code Map} obtenue de {@link symptomCount} pour créer une liste de chaînes de caractères
      * où chaque élément est un symptôme suivi de son nombre d'occurrences, triés par ordre alphabétique des symptômes.
@@ -56,7 +56,7 @@ public class AnalyticsCounter {
      * @param symptomCounts Une {@code Map} où les clés sont les symptômes et les valeurs sont leur nombre d'occurrences.
      * @return Une liste de chaînes de caractères où chaque élément est un symptôme suivi de son nombre d'occurrences, triés par ordre alphabétique.
      */
-    public List<String> sortedSymptoms(Map<String, Integer> symptomCounts) {
+    public List<String> sortSymptoms(Map<String, Integer> symptomCounts) {
         List<Map.Entry<String, Integer>> sortedSymptomEntries = new ArrayList<>(symptomCounts.entrySet());
         Collections.sort(sortedSymptomEntries, Map.Entry.comparingByKey());
         return sortedSymptomEntries.stream()
@@ -65,16 +65,16 @@ public class AnalyticsCounter {
     }
     
     /**
-     * La méthode {@code analyseEtEcritureSymptome} coordonne la lecture, le comptage, le tri et l'écriture des symptômes.
+     * La méthode {@code analyticsSymptom} coordonne la lecture, le comptage, le tri et l'écriture des symptômes.
      * <p>
-     * Elle appelle les méthodes {@link GetSymptoms()}, {@link symptomCount()}, {@link sortedSymptoms()} et {@link WriteSymptomData()}
+     * Elle appelle les méthodes {@link getSymptoms()}, {@link symptomCount()}, {@link sortSymptoms()} et {@link writeSymptoms()}
      * pour lire les symptômes, les compter, les trier, et écrire les résultats dans un fichier spécifié.
      * </p>
      */
-    public void analyseEtEcritureSymptome() {
-        List<String> symptoms = monReader.GetSymptoms();
+    public void analyticsSymptoms() {
+        List<String> symptoms = monReader.getSymptoms();
         Map<String, Integer> symptomCounts = symptomCount(symptoms);
-        List<String> symptomData = sortedSymptoms(symptomCounts);
-        monWriter.WriteSymptomData(symptomData);
+        List<String> symptomData = sortSymptoms(symptomCounts);
+        monWriter.writeSymptoms(symptomData);
     }
 }

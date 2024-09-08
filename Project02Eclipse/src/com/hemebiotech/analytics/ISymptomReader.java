@@ -16,6 +16,6 @@ public interface ISymptomReader {
      *
      * @return Une liste de chaînes de caractères représentant les symptômes.
      */
-    List<String> GetSymptoms();
+    List<String> getSymptoms();
 }
 

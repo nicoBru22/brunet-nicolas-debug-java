@@ -30,6 +30,6 @@ public class Main {
         ISymptomWriter writer = new WriteSymptomDataFromFile("result.out");
         
         AnalyticsCounter analyticsCounter = new AnalyticsCounter(reader, writer);
-        analyticsCounter.analyseEtEcritureSymptome();
+        analyticsCounter.analyticsSymptoms();
     }
 }

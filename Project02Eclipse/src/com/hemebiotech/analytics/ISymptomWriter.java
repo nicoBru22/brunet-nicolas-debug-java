@@ -21,5 +21,5 @@ public interface ISymptomWriter {
      * @param result La liste des symptômes à écrire. Chaque élément de la liste est une chaîne de caractères
      *               représentant un symptôme à écrire dans le document.
      */
-    void WriteSymptomData(List<String> result);
+    void writeSymptoms(List<String> result);
 }
